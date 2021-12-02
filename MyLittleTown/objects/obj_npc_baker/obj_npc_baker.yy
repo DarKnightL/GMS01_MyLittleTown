@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_baker_idle_down_strip04",
-    "path": "sprites/spr_baker_idle_down_strip04/spr_baker_idle_down_strip04.yy",
+    "name": "spr_baker_idle_down",
+    "path": "sprites/spr_baker_idle_down/spr_baker_idle_down.yy",
   },
   "solid": false,
   "visible": true,
