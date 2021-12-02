@@ -1,4 +1,4 @@
-/// @description Insert description here
+ /// @description Insert description here
 // You can write your code in this editor
 moveRight=keyboard_check(vk_right);
 moveUp=keyboard_check(vk_up);
@@ -8,6 +8,17 @@ moveLeft=keyboard_check(vk_left);
 
 vx=(moveRight-moveLeft)*walkSpeed;
 vy=(moveDown-moveUp)*walkSpeed;
+
+
+//Collisions with NPCs
+nearbyNPC=collision_rectangle(x-lookRange,y-lookRange,x+lookRange,y+lookRange,obj_par_npc,false,true); 
+if(nearbyNPC){
+	show_debug_message("obj_player collided with NPC");
+}
+if(!nearbyNPC){
+	show_debug_message("obj_player does not collide with NPC");
+}
+
 
 
 //Depth control
