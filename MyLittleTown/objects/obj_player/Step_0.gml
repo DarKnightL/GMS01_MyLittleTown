@@ -13,10 +13,18 @@ vy=(moveDown-moveUp)*walkSpeed;
 //Collisions with NPCs
 nearbyNPC=collision_rectangle(x-lookRange,y-lookRange,x+lookRange,y+lookRange,obj_par_npc,false,true); 
 if(nearbyNPC){
-	show_debug_message("obj_player collided with NPC");
+	if(hasGreeted==false){
+		if(!audio_is_playing(snd_greeting01)){
+			audio_play_sound(snd_greeting01,1,false);
+			hasGreeted=true;
+		}
+	}
 }
+
 if(!nearbyNPC){
-	show_debug_message("obj_player does not collide with NPC");
+	if(hasGreeted==true){
+		hasGreeted=false;
+	}
 }
 
 
