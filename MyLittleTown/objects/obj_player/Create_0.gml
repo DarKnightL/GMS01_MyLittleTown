@@ -12,3 +12,6 @@ moveDown=0;
 
 nearbyNPC=noone;
 lookRange=30;
+
+audio_listener_set_position(0,x,y,0);
+audio_listener_set_orientation(0,0,1,0,0,0,1);
