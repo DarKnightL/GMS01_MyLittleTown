@@ -6,3 +6,17 @@ switch room{
 		audio_play_sound(snd_townAmbience,1,true);		
 		break;
 }
+
+
+global.playerControl=true;
+
+
+//Player States
+enum playerState{
+	idle,
+	walking,
+	pickingUp,
+	carrying,
+	carryIdle,
+	puttingDown,
+}

@@ -1,10 +1,21 @@
  /// @description Insert description here
 // You can write your code in this editor
-moveRight=keyboard_check(vk_right);
-moveUp=keyboard_check(vk_up);
-moveDown=keyboard_check(vk_down);
-moveLeft=keyboard_check(vk_left);
 
+
+
+//Check keys for move
+if(global.playerControl==true){
+	moveRight=keyboard_check(vk_right);
+	moveUp=keyboard_check(vk_up);
+	moveDown=keyboard_check(vk_down);
+	moveLeft=keyboard_check(vk_left);
+}
+if(global.playerControl==false){
+	moveRight=0;
+	moveUp=0;
+	moveDown=0;
+	moveLeft=0;
+}
 
 vx=(moveRight-moveLeft)*walkSpeed;
 vy=(moveDown-moveUp)*walkSpeed;
@@ -19,12 +30,31 @@ if(nearbyNPC){
 			hasGreeted=true;
 		}
 	}
+	if(npcPrompt==noone||npcPrompt==undefined){
+		npcPrompt=scr_showPrompt(nearbyNPC,nearbyNPC.x,nearbyNPC.y-450);
+	}
 }
+
 
 if(!nearbyNPC){
 	if(hasGreeted==true){
 		hasGreeted=false;
 	}
+	 scr_dismissPrompt(npcPrompt,0);
+}
+
+
+
+//Collisions with Items
+nearbyItem=collision_rectangle(x-lookRange,y-lookRange,x+lookRange,y+lookRange,obj_par_item,false,false);
+if(nearbyItem){
+	if(itemPrompt==noone||itemPrompt==undefined){
+		show_debug_message("Object found an item!");
+		itemPrompt=scr_showPrompt(nearbyItem,nearbyItem.x,nearbyItem.y-300);
+	}
+}
+if(!nearbyItem){
+	scr_dismissPrompt(itemPrompt,1);
 }
 
 
@@ -34,46 +64,40 @@ depth=-y;
 
 //Idle Sprite control
 if(vx==0&&vy==0){
-	switch dir{
-		case 0: sprite_index=spr_player_idle_right; break;
-		case 1: sprite_index=spr_player_idle_up; break;
-		case 2: sprite_index=spr_player_idle_left; break;
-		case 3: sprite_index=spr_player_idle_down; break;
-	}
+		myState=playerState.idle;
 }
 
 if(vx!=0||vy!=0){
-{
-	if(!collision_point(x+vx,y,obj_par_environment,true,true)){
-		x+=vx;
-	}
-	if(!collision_point(x,y+vy,obj_par_environment,true,true)){
-		y+=vy;
-	}
+	{
+		if(!collision_point(x+vx,y,obj_par_environment,true,true)){
+			x+=vx;
+		}
+		if(!collision_point(x,y+vy,obj_par_environment,true,true)){
+			y+=vy;
+		}
 
 
 
-//Change walking sprite
-	if(vx>0){
-	sprite_index=spr_player_walk_right;
-	dir=0;
-	}
+	//Change walking sprite
+		if(vx>0){
+		dir=0;
+		}
 
-	if(vx<0){
-	sprite_index=spr_player_walk_left;
-	dir=2;
-	}
+		if(vx<0){
+		dir=2;
+		}
 
-	if(vy>0){
-	sprite_index=spr_player_walk_down;
-	dir=3;
-	}
+		if(vy>0){
+		dir=3;
+		}
 
-	if(vy<0){
-	sprite_index=spr_player_walk_up;
-	dir=1;
+		if(vy<0){
+		dir=1;
+		}	
+
+	myState=playerState.walking;
+
 	}
 	
-}
-	audio_listener_set_position(0,x,y,0);
+audio_listener_set_position(0,x,y,0);
 }
