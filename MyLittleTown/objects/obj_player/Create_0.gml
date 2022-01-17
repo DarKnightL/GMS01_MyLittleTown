@@ -45,3 +45,28 @@ playerSpr[playerState.walking][0]=spr_player_walk_right;
 playerSpr[playerState.walking][1]=spr_player_walk_up;
 playerSpr[playerState.walking][2]=spr_player_walk_left;
 playerSpr[playerState.walking][3]=spr_player_walk_down;
+
+//Picking up
+playerSpr[playerState.pickingUp][0]=spr_player_pickUp_right;
+playerSpr[playerState.pickingUp][1]=spr_player_pickUp_up;
+playerSpr[playerState.pickingUp][2]=spr_player_pickUp_left;
+playerSpr[playerState.pickingUp][3]=spr_player_pickUp_down;
+
+//Carrying
+playerSpr[playerState.carrying][0]=spr_player_carry_right;
+playerSpr[playerState.carrying][1]=spr_player_carry_up;
+playerSpr[playerState.carrying][2]=spr_player_carry_left;
+playerSpr[playerState.carrying][3]=spr_player_carry_down;
+
+//Carrying idle
+playerSpr[playerState.carryIdle][0]=spr_player_carryIdle_right;
+playerSpr[playerState.carryIdle][1]=spr_player_carryIdle_up;
+playerSpr[playerState.carryIdle][2]=spr_player_carryIdle_left;
+playerSpr[playerState.carryIdle][3]=spr_player_carryIdle_down;
+
+//Putting down
+playerSpr[playerState.puttingDown][0]=spr_player_putDown_right;
+playerSpr[playerState.puttingDown][1]=spr_player_putDown_up;
+playerSpr[playerState.puttingDown][2]=spr_player_putDown_left;
+playerSpr[playerState.puttingDown][3]=spr_player_putDown_down;
+

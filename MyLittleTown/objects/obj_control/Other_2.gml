@@ -20,3 +20,12 @@ enum playerState{
 	carryIdle,
 	puttingDown,
 }
+
+
+//Item States
+enum itemState{
+	idle,
+	taken,
+	used,
+	puttingback,
+}
